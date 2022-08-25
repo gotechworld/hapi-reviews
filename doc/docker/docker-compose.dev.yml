@@ -1,0 +1,56 @@
+version: "2"
+services:
+  app_reviews:
+    container_name: app_reviews
+    restart: "no"
+    build: .
+    volumes:
+      - ./../:/var/www/reviews-api/
+    ports:
+      - "4700:4650"
+    links:
+      - mongo_reviews
+      - redis_reviews
+      - rabbitmq_reviews
+    networks:
+      review:
+        ipv4_address: 172.21.0.2
+
+  mongo_reviews:
+    container_name: mongo_reviews
+    image: mongo
+    volumes:
+      - ./../data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      review:
+        ipv4_address: 172.21.0.3
+
+  redis_reviews:
+    container_name: redis_reviews
+    image: redis
+    networks:
+      review:
+        ipv4_address: 172.21.0.4
+
+  rabbitmq_reviews:
+    container_name: rabbitmq_reviews
+    image: "rabbitmq:alpine"
+    #    command: rabbitmq-plugins enable rabbitmq_management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      review:
+        ipv4_address: 172.21.0.5
+volumes:
+  data-volume:
+
+networks:
+  review:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1

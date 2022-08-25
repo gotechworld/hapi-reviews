@@ -1,0 +1,11 @@
+{
+    "name": "reviews",
+    "version": "1.0.0",
+    "description": "Reviews API",
+    "main": "./lib/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Gabriel Cioropina <gabriel.cioropina@axsys.ro>",
+    "license": "ISC"
+  }

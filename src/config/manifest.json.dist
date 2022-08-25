@@ -1,0 +1,131 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 4650,
+    "app": {
+      "appName": "reviews-api",
+      "releaseVersion": "2"
+    },
+    "router": {
+      "isCaseSensitive": false,
+      "stripTrailingSlash": true
+    },
+    "cache": [{
+      "name": "redisCache",
+      "provider": {
+        "constructor": {},
+        "options": {
+          "partition": "cache",
+          "host": "redis_reviews",
+          "port": 6379,
+          "database": 0
+        }
+      }
+    }],
+    "debug": {
+      "request": [
+        "error"
+      ]
+    }
+  },
+  "register": {
+    "plugins": [
+      "hapi-pino",
+      {
+        "plugin": "hapi-internal-bridge",
+        "options": {
+          "imApiUrl": "https://im-api-s1.altex.ro",
+          "serviceName": "API_REVIEW",
+          "serviceKey": "faedb58906677c5298fd6c3c3407664ef1735e74",
+          "cacheName": "redisCache",
+          "cacheTTL": 120000
+        }
+      },
+      {
+        "plugin": "hapi-panda-mongoose",
+        "options": {
+          "uri": "mongodb://mongo_reviews:27017/reviews",
+          "mongoose": {
+            "autoIndex": false,
+            "autoReconnect": true,
+            "poolSize": 50,
+            "useNewUrlParser": true
+          }
+        }
+      },
+      {
+        "plugin": "hapi-alerto",
+        "options": {
+          "dsn": "http://token@sentry-s1.altex.ro/5"
+        }
+      },
+      {
+        "plugin": "./plugins/reviews/",
+        "options": {
+          "models": ["review", "question", "summary", "report", "stat", "review_type", "lock"],
+          "services": {
+            "queue": {
+              "dsn": "amqp://rabbitmq:rabbitmq@172.21.0.5:5672",
+              "prefetchCount": 1
+            },
+            "oms": {
+              "baseUrl": "https://oms-s1.altex.ro/"
+            },
+            "catalog": {
+              "baseUrl": "https://catalog-s1.altex.ro/"
+            },
+            "notif": {
+              "websites": {
+                "altex": {
+                  "baseUrl": "https://notif-s1.altex.ro/"
+                },
+                "mediagalaxy": {
+                  "baseUrl": "https://notif-s1.mediagalaxy.ro/"
+                }
+              },
+              "reportEmailSend": "email@altex.ro",
+            },
+            "customer": {
+              "baseUrl": "https://cm-s1.altex.ro/"
+            },
+            "magento": {
+              "baseUrl": "https://ecom-api-s1.altex.ro",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Request-AtxApi": "38395042751e4d189edb6cfdad16619b"
+              }
+            },
+           "product": {
+             "baseUrl": "https://enginey-s1.altex.ro",
+             "basicAuth": "user:pass"
+           },
+           "media": {
+             "baseUrl": "https://mediacdn-s1.altex.ro/",
+             "token": "4687428410c7dcb47cac"
+           }
+          },
+          "auth": {
+            "name": "API_CATALOG",
+            "key": "3a3743ba866963ae6c35648b499ae677c5fa4ffa"
+          },
+          "autoApprove": {
+            "enabled": false,
+            "minWords": 30,
+            "badWords": ["cacat"]
+          },
+          "merchandisers": {
+            "SONY": "email10@sony.com",
+            "APPLE": "email@apple.com"
+          },
+          "minPopularUpvotes": 10
+        }
+      },
+      "@hapi/inert",
+      "@hapi/vision",
+      {
+        "plugin": "hapi-swagger",
+        "options": {}
+      }
+    ]
+  }
+}

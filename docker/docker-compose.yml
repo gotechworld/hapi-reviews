@@ -1,0 +1,32 @@
+version: '2'
+services:
+  app_reviews:
+    container_name: app_reviews
+    restart: always
+    build: .
+    volumes:
+      - './../:/var/www/reviews-api/'
+    ports:
+      - '4700:4650'
+    links:
+      - mongo_reviews
+      - redis_reviews
+  mongo_reviews:
+    container_name: mongo_reviews
+    image: mongo
+    volumes:
+      - './../data:/data/db'
+    ports:
+      - '27017:27017'
+  redis_reviews:
+    container_name: redis_reviews
+    image: redis
+    ports:
+      - '6379:6379'
+  rabbitmq_reviews:
+    container_name: rabbitmq_reviews
+    image: 'rabbitmq:alpine'
+    ports:
+      - '5672:5672'
+volumes:
+  data-volume: null

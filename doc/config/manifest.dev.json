@@ -1,0 +1,105 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 4650,
+    "app": {
+      "appName": "reviews-api",
+      "releaseVersion": "2"
+    },
+    "router": {
+      "isCaseSensitive": false,
+      "stripTrailingSlash": true
+    },
+    "cache": [
+      {
+        "name": "redisCache",
+        "provider": {
+          "constructor": {},
+          "options": {
+            "partition": "cache",
+            "host": "172.21.0.4",
+            "port": 6379,
+            "database": 0
+          }
+        }
+      }
+    ],
+    "debug": {
+      "request": ["error"]
+    }
+  },
+  "register": {
+    "plugins": [
+      "hapi-pino",
+      {
+        "plugin": "hapi-internal-bridge",
+        "options": {
+          "imApiUrl": "https://im-api-s1.altex.ro",
+          "serviceName": "API_REVIEW",
+          "serviceKey": "faedb58906677c5298fd6c3c3407664ef1735e74",
+          "cacheName": "redisCache",
+          "cacheTTL": 120000
+        }
+      },
+      {
+        "plugin": "hapi-panda-mongoose",
+        "options": {
+          "uri": "mongodb://172.21.0.3:27017/reviews",
+          "mongoose": {
+            "autoIndex": false,
+            "autoReconnect": true,
+            "poolSize": 50,
+            "useNewUrlParser": true
+          }
+        }
+      },
+      {
+        "plugin": "hapi-alerto",
+        "options": {
+          "dsn": "http://token@sentry-s1.altex.ro/5"
+        }
+      },
+      {
+        "plugin": "./plugins/reviews/",
+        "options": {
+          "models": ["review", "question", "summary", "report", "stat"],
+          "services": {
+            "queue": {
+              "dsn": "amqp://guest:guest@172.21.0.5:5672",
+              "queues": [ "brands", "reviews" ],
+              "prefetchCount": 1
+            },
+            "oms": {
+              "baseUrl": "https://oms-s1.altex.ro/"
+            },
+            "catalog": {
+              "baseUrl": "https://catalog-s1.altex.ro/"
+            },
+            "notif": {
+              "baseUrl": "https://notif-s1.altex.ro/",
+              "reportEmailSend": "pavel.adrian10@gmail.com"
+            }
+          },
+          "auth": {
+            "name": "API_CATALOG",
+            "key": "3a3743ba866963ae6c35648b499ae677c5fa4ffa"
+          },
+          "autoApprove": {
+            "minWords": 30
+          },
+          "merchandisers": {
+            "SONY": "pavel.adrian10@gmail.com",
+            "SAMSUNG": "adrian.pavel@altex.ro"
+          },
+          "minPopularUpvotes": 1
+        }
+      },
+      "@hapi/inert",
+      "@hapi/vision",
+      {
+        "plugin": "hapi-swagger",
+        "options": {}
+      }
+    ]
+  }
+}

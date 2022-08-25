@@ -1,0 +1,11 @@
+manifest.json
+*.log
+.idea
+.DS_Store
+node_modules
+data
+*.zip
+*.rar
+*.tar.gz
+*.tgz
+dist

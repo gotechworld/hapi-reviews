@@ -1,0 +1,1241 @@
+{
+	"info": {
+		"_postman_id": "7323da87-be60-4488-b190-428dfa3f59c1",
+		"name": "Reviews",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Report Review",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reviewId\": \"5f50d9c262abf974f981a090\",\n    \"customerName\": \"Adrian\",\n    \"customerId\": 2323232\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/reports/review",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reports",
+						"review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Report Question",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"questionId\": \"5f0ee7fc73cff40c7b11ec8b\",\n    \"customerName\": \"Adrian\",\n    \"customerId\": 2323232\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/reports/question",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reports",
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74",
+						"type": "text"
+					},
+					{
+						"key": "X-Service-Name",
+						"value": "API_REVIEW",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 219646,\n    \"sellerId\": 1,\n    \"customerName\": \"Adrian\",\n    \"customerId\": 444,\n    \"verifiedBuyer\": true,\n    \"rating\": 5,\n    \"body\": \"aaaaaaaa aaaaa aaaaa aaaa aaaaaaaa aaa aaaaa aaaa aaaaaaaa aaaa aaaaa aaaa aaaaaaa aaaa aaaaaa aa aaaa aaaaa yuu uuuu uuu uuuuu uuuuu uuuu uuu uuu dwdw dwdw dwdw dwdwd cscscs\",\n    \"title\": \"e super tare acest produs\",\n    \"terms\": true,\n    \"type\": \"test\",\n    \"typeId\": \"60a29a0d5f98cf446c92ced7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/reviews",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"upvotes\": 1,\n    \"status\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/reviews/5f5884d8697cf121f83d898f",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reviews",
+						"5f5884d8697cf121f83d898f"
+					]
+				},
+				"description": "\"images\" key should be an array with paths to reviews files. Images are optional and are overridden by each request. If you want to add a new image you should send all the paths again in order to be saved.\n\n\"upvotes\" & \"downvotes\" keys support both 1 / -1 values in order to increment/decrement correctly.\n\"communityCustomerId\" is the ID of the current user that is doing an upvote/downvote.\n\n\"rating\" maximum allowed number for rating is 5.\n\n\"terms\" key is a boolean for Terms and conditions.\n\n\"typeId\" & \"type\" is the ID and the type of the review."
+			},
+			"response": []
+		},
+		{
+			"name": "Reviews list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/reviews?customerId=444",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "verifiedBuyer",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "popular",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "website",
+							"value": "altex",
+							"disabled": true
+						},
+						{
+							"key": "customerId",
+							"value": "111",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": "upvotes",
+							"disabled": true
+						},
+						{
+							"key": "productId",
+							"value": "201843",
+							"disabled": true
+						},
+						{
+							"key": "date",
+							"value": "2020-08-27",
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": "desc",
+							"disabled": true
+						},
+						{
+							"key": "recommendProduct",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "rating",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "fromMerchandiser",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "show_context",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "reviewId",
+							"value": "5cb5a4befd483077e1fe3675",
+							"disabled": true
+						},
+						{
+							"key": "customerId",
+							"value": "444"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review read",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					},
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/reviews/5f5b380f165e9a0b841738ba?show_context=true",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reviews",
+						"5f5b380f165e9a0b841738ba"
+					],
+					"query": [
+						{
+							"key": "show_context",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					},
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/reviews/5c389701ba714877e6f3a1ba",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reviews",
+						"5c389701ba714877e6f3a1ba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Question create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 47298,\n    \"sellerId\": 1,\n    \"customerName\": \"Adrian\",\n    \"customerId\": 444,\n    \"body\": \"verifiedBuyer false\",\n    \"parentId\":\"5f51e01162abf974f981a09a\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/questions",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Question update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/questions/5f58c25f25343d4650329069",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"questions",
+						"5f58c25f25343d4650329069"
+					]
+				},
+				"description": "\"upvotes\" & \"downvotes\" keys supports both 1 / -1 values in order to increment/decrement correctly. \"communityCustomerId\" is the ID of the current user that is doing an upvote/downvote.\n\n\"sameQuestion\" key supports both 1 / -1 values in order to increment/decrement correctly.\n\ncustomers_sameQuestion, \"community\"[\"customers_downvoting\"] / \"community\"[\"customers_upvoting\"] are the keys that are returned with data related to customers that did some actions: upvoting, downvoting, sameQuestions"
+			},
+			"response": []
+		},
+		{
+			"name": "Questions list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/questions?questionId=5c389701ba714877e6f3a1ba",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"questions"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "website",
+							"value": "mediagalaxy",
+							"disabled": true
+						},
+						{
+							"key": "customerId",
+							"value": "765423",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": "upvotes",
+							"disabled": true
+						},
+						{
+							"key": "orderBy",
+							"value": "desc",
+							"disabled": true
+						},
+						{
+							"key": "date",
+							"value": "2020-07-16",
+							"disabled": true
+						},
+						{
+							"key": "productId",
+							"value": "201843",
+							"disabled": true
+						},
+						{
+							"key": "show_context",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "questionId",
+							"value": "5c389701ba714877e6f3a1ba"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Question read",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Name",
+						"value": "API_REVIEW",
+						"type": "text"
+					},
+					{
+						"key": "X-Service-Key",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/questions/5c389701ba714877e6f3a1ba?show_context=true",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"questions",
+						"5c389701ba714877e6f3a1ba"
+					],
+					"query": [
+						{
+							"key": "show_context",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Question delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					},
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/questions/5c389701ba714877e6f3a1ba",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"questions",
+						"5c389701ba714877e6f3a1ba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stats read",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"downvotes\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.reviews.devel:4650/stats/today",
+					"protocol": "http",
+					"host": [
+						"api",
+						"reviews",
+						"devel"
+					],
+					"port": "4650",
+					"path": [
+						"stats",
+						"today"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stats list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.reviews.devel:4650/stats?sortBy=date&orderBy=asc&date=2020-07-16",
+					"protocol": "http",
+					"host": [
+						"api",
+						"reviews",
+						"devel"
+					],
+					"port": "4650",
+					"path": [
+						"stats"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "date"
+						},
+						{
+							"key": "orderBy",
+							"value": "asc"
+						},
+						{
+							"key": "date",
+							"value": "2020-07-16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Summaries list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"type": "text",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74"
+					},
+					{
+						"key": "X-Service-Name",
+						"type": "text",
+						"value": "API_REVIEW"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/summaries?productId=201843",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"summaries"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "201843"
+						},
+						{
+							"key": "sellerId",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Review Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-customer-token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 219646,\n    \"sellerId\": 1,\n    \"customerName\": \"Adrian\",\n    \"customerId\": 1189489,\n    \"verifiedBuyer\": true,\n    \"rating\": 5,\n    \"body\": \"aaaaaaaa aaaaa aaaaa aaaa aaaaaaaa aaa aaaaa aaaa aaaaaaaa aaaa aaaaa aaaa aaaaaaa aaaa aaaaaa aa aaaa aaaaa yuu uuuu uuu uuuuu uuuuu uuuu uuu uuu dwdw dwdw dwdw dwdwd cscscs\",\n    \"title\": \"e super tare\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/review/reviews",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Review Upvote",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-customer-token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/reviews/upvote/5f4e4c2681d2353d63a4cd21",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"reviews",
+						"upvote",
+						"5f4e4c2681d2353d63a4cd21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Review Downvote",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-customer-token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/reviews/downvote/5f4e4c2681d2353d63a4cd21",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"reviews",
+						"downvote",
+						"5f4e4c2681d2353d63a4cd21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Reviews List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Customer-Token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/reviews/?sortBy=upvotes&orderBy=asc&productId=219646&limit=5&page=0",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"reviews",
+						""
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "upvotes"
+						},
+						{
+							"key": "orderBy",
+							"value": "asc"
+						},
+						{
+							"key": "productId",
+							"value": "219646"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Question Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-customer-token",
+						"value": "{{x-customer-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 219646,\n    \"sellerId\": 1,\n    \"customerName\": \"Adrian\",\n    \"customerId\": 1189489,\n    \"body\": \"aaaaaaaa aaaaa aaaaa aaaa aaaaaaaa aaa aaaaa aaaa aaaaaaaa aaaa aaaaa aaaa aaaaaaa aaaa aaaaaa aa aaaa aaaaa yuu uuuu uuu uuuuu uuuuu uuuu uuu uuu dwdw dwdw dwdw dwdwd cscscs\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/review/questions",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Question Upvote",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Customer-Token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/questions/upvote/5f51e01162abf974f981a09a",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"questions",
+						"upvote",
+						"5f51e01162abf974f981a09a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Question Downvote",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Customer-Token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/questions/downvote/5f51e01162abf974f981a09a",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"questions",
+						"downvote",
+						"5f51e01162abf974f981a09a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Question SameQuestion",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Customer-Token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/questions/sameQuestion/5f51e01162abf974f981a09a",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"questions",
+						"sameQuestion",
+						"5f51e01162abf974f981a09a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Questions List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Customer-Token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/questions/?sortBy=upvotes&orderBy=desc&productId=158723",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"questions",
+						""
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "upvotes"
+						},
+						{
+							"key": "orderBy",
+							"value": "desc"
+						},
+						{
+							"key": "productId",
+							"value": "158723"
+						},
+						{
+							"key": "limit",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Report Question",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Customer-Token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/questions/report/5f563d9f89aaeb6e635c8507",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"questions",
+						"report",
+						"5f563d9f89aaeb6e635c8507"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway Report Review",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Customer-Token",
+						"type": "text",
+						"value": "{{x-customer-token}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review/reviews/report/5f50d9c262abf974f981a090",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review",
+						"reviews",
+						"report",
+						"5f50d9c262abf974f981a090"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review types list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74",
+						"type": "text"
+					},
+					{
+						"key": "X-Service-Name",
+						"value": "API_REVIEW",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review_types",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review_types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review type delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74",
+						"type": "text"
+					},
+					{
+						"key": "X-Service-Name",
+						"value": "API_REVIEW",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/review_types/60a2975885767342c4ae6efe",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review_types",
+						"60a2975885767342c4ae6efe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review type update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74",
+						"type": "text"
+					},
+					{
+						"key": "X-Service-Name",
+						"value": "API_REVIEW",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/review_types/60a29a0d5f98cf446c92ced7",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review_types",
+						"60a29a0d5f98cf446c92ced7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review type create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Service-Key",
+						"value": "faedb58906677c5298fd6c3c3407664ef1735e74",
+						"type": "text"
+					},
+					{
+						"key": "X-Service-Name",
+						"value": "API_REVIEW",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"test22\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/review_types",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"review_types"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:4650"
+		},
+		{
+			"key": "customerId",
+			"value": ""
+		},
+		{
+			"key": "usernames",
+			"value": ""
+		},
+		{
+			"key": "count",
+			"value": ""
+		}
+	]
+}
