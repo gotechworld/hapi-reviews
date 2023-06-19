@@ -42,7 +42,7 @@
     "lodash": "^4.17.19",
     "minimist": "^1.2.5",
     "mongoose": "^5.2.10",
-    "qs": "^6.9.4",
+    "qs": "^6.11.2",
     "require-dir": "^1.0.0"
   },
   "devDependencies": {
