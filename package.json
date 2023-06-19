@@ -22,7 +22,7 @@
   "author": "Gabriel Cioropina <gabriel.cioropina@axsys.ro>",
   "license": "ISC",
   "dependencies": {
-    "@hapi/boom": "^7.4.2",
+    "@hapi/boom": "^7.4.11",
     "@hapi/catbox-redis": "^5.0.2",
     "@hapi/glue": "^6.1.0",
     "@hapi/hapi": "^18.4.1",
