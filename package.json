@@ -41,7 +41,7 @@
     "hapi-swagger": "^10.0.2",
     "lodash": "^4.17.19",
     "minimist": "^1.2.5",
-    "mongoose": "^5.2.10",
+    "mongoose": "^5.13.17",
     "qs": "^6.9.4",
     "require-dir": "^1.0.0"
   },
