@@ -30,7 +30,7 @@
     "@hapi/joi": "^16.1.7",
     "@hapi/vision": "^5.4.0",
     "amqplib": "^0.5.6",
-    "apisauce": "^1.1.1",
+    "apisauce": "^3.0.1",
     "core-js": "^3.1.4",
     "fast-csv": "^2.4.1",
     "form-data": "^4.0.0",
