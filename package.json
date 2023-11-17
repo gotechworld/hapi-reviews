@@ -38,7 +38,7 @@
     "hapi-internal-bridge": "git+ssh://git@gitlab.altex.ro:plug/hapi-internal-bridge.git#v1.1.0",
     "hapi-panda-mongoose": "^0.1.0",
     "hapi-pino": "^6.0.0",
-    "hapi-swagger": "^10.0.2",
+    "hapi-swagger": "^14.2.5",
     "lodash": "^4.17.19",
     "minimist": "^1.2.5",
     "mongoose": "^5.2.10",
